@@ -20,11 +20,11 @@ accountModel.findOne({ email: email }).then(userDoc => {
                     userId: user._id
                 }, "f21cb2048f56107dfb9279a8d47de87c")
                 res.send({ message: "user succesfully created", token })
-                emailjs.send("service_ag80x0s", "template_d71f9uq", {
-                    name: user.name,
-                    accountNumber: user.accountNumber,
-                    email: user.email
-                })
+                // emailjs.send("service_ag80x0s", "template_d71f9uq", {
+                //     name: user.name,
+                //     accountNumber: user.accountNumber,
+                //     email: user.email
+                // })
                 
         }).catch((err) => console.log(err))
         }).catch(err => res.send({ message: "an error occured", error: err }))

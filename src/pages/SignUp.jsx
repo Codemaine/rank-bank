@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css"
 import generateUniqueId from 'generate-unique-id'
 import { useForm } from 'react-hook-form';
@@ -8,14 +8,12 @@ import toast, { Toaster } from 'react-hot-toast';
  
 
 function SignUp() {
-    const { register, handleSubmit, setError, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const [name, setName] = React.useState("");
     let nameError = false;
     let emailError = false;
     let passError = false;
-    const [email, setEmail] = React.useState("");
     const [account_number, setAccount_number] = React.useState("");
-    const [password, setPassword] = React.useState("");
     const [isButtonLoading, setIsButtonLoading] = React.useState(false);
     const onSubmit = data => {
         setIsButtonLoading(true)
@@ -78,7 +76,7 @@ function SignUp() {
                         <form onSubmit={handleSubmit(onSubmit)} noValidate>
                             <div className="mb-3">
                                 <label htmlFor="inputPassword5" className="form-label">Full Name</label>
-                                <input onChange={text => setName(text.target.value)} type="name" id="inputPassword5" className={nameError ? "form-control" : "form-control border-danger"} aria-describedby="passwordHelpBlock" {...register("name", {
+                                <input onChange={text => setName(text.target.value)} value={name} type="name" id="inputPassword5" className={nameError ? "form-control" : "form-control border-danger"} aria-describedby="passwordHelpBlock" {...register("name", {
                                     required: {
                                         value: true,
                                         message: "The name field is required"

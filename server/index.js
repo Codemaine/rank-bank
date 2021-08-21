@@ -6,7 +6,11 @@ const isAuth = require('./middleware/isAuth')
 const { sendMoney, viewTransactions } = require('./controllers/transactionControllers')
 const bodyParser = require("body-parser")
 const app = express();
+const { init } = require("emailjs-com")
 const mongoose = require('mongoose')
+
+//Initizalize EmailJs
+init("user_6zQL40OEqWVoV3Lx06Lxc")
 
 //Mongoose Uri
 const uri = "mongodb+srv://Jermaine:Gpm4QNPJN3i47c1F@cluster0.iwfxy.mongodb.net/codetrain?retryWrites=true&w=majority"

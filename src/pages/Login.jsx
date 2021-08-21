@@ -1,25 +1,23 @@
-import React, { Component } from 'react'
+import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css"
-import generateUniqueId from 'generate-unique-id'
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
-import { useHistory } from 'react-router';
  
 
 function Login(props) {
-    const history = useHistory();
-    const { register, handleSubmit, setError, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     let emailError = false;
     let passError = false;
-    const [email, setEmail] = React.useState("");
-    const [password, setPassword] = React.useState("");
     const [isButtonLoading, setIsButtonLoading] = React.useState(false);
     const onSubmit = data => {
        axios({
            method: "POST",
            url: "http://localhost:4000/login",
+           headers: {
+             "Access-Control-Allow-Origin": true
+           },
            data: {
                email: data.email,
                password: data.email
@@ -35,6 +33,7 @@ function Login(props) {
                     toast.success("SignUp successfull")
                     if(data.data.token){
                         localStorage.setItem("userToken", data.data.token)
+                        window.location.replace('/')
                     }
                     break;
                 default:
@@ -54,6 +53,9 @@ function Login(props) {
                 axios({
                     method: "POST",
                     url: "http://localhost:4000/vertify-token",
+                    headers: {
+                        "Access-Control-Allow-Origin": true
+                      },
                     data: {
                         accountToken: localStorage.getItem('userToken')
                     }
@@ -76,7 +78,7 @@ function Login(props) {
                         <form onSubmit={handleSubmit(onSubmit)} noValidate>
                             <div className="mb-3">
                                 <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                                <input type="email" className={emailError ? "form-control" : "form-control border-danger"} id="exampleInputEmail1" aria-describedby="emailHelp" {...register("email", {
+                                <input type="email"  className={emailError ? "form-control" : "form-control border-danger"} id="exampleInputEmail1" aria-describedby="emailHelp" {...register("email", {
                                     required: {
                                         value: true,
                                         message: "The email field is required"

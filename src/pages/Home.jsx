@@ -86,7 +86,8 @@ class Home extends Component {
             method: "POST",
             url: "http://localhost:4000/send-money",
             headers: {
-                "Authorization": `Bearer ${token}`
+                "Access-Control-Allow-Origin": true,
+                "Authorization": `Bearer ${token}`,
             },
             data
         }).then(data => {
@@ -114,7 +115,7 @@ class Home extends Component {
                 <div className="container-fluid">
                     <nav className="navbar navbar-light bg-light">
                         <div className="container-fluid">
-                            <a className="navbar-brand">Rank Bank</a>
+                            <a href="/" className="navbar-brand">Rank Bank</a>
                             <form className="d-flex">   
                                 <input className="form-control me-2" value={this.state.user.accountNumber} readOnly placeholder="Search" id="an_field" aria-label="Search" />
                                 <button className="btn btn-outline-success me-1" type="submit" onClick={(e) => this.copyTextToClipboard(this.state.user.accountNumber, e)}>Copy</button>
@@ -159,7 +160,7 @@ class Home extends Component {
                             <div className="card-body">
                                 <h1 className="card-title">Transactions</h1>
                                 <div class="row">
-                                    {!this.state.transactions.length == 0 ? this.state.transactions.map((item) => {
+                                    {!this.state.transactions.length === 0 ? this.state.transactions.map((item) => {
                                        return (
                                         <div class="col mt-2">
                                         <div className="card" style={{ width: '18rem' }}>
