@@ -9,7 +9,6 @@ import toast, { Toaster } from 'react-hot-toast';
 
 function SignUp() {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const [name, setName] = React.useState("");
     let nameError = false;
     let emailError = false;
     let passError = false;
@@ -76,7 +75,7 @@ function SignUp() {
                         <form onSubmit={handleSubmit(onSubmit)} noValidate>
                             <div className="mb-3">
                                 <label htmlFor="inputPassword5" className="form-label">Full Name</label>
-                                <input onChange={text => setName(text.target.value)} value={name} type="name" id="inputPassword5" className={nameError ? "form-control" : "form-control border-danger"} aria-describedby="passwordHelpBlock" {...register("name", {
+                                <input type="name" id="inputPassword5" className={nameError ? "form-control" : "form-control border-danger"} aria-describedby="passwordHelpBlock" {...register("name", {
                                     required: {
                                         value: true,
                                         message: "The name field is required"
