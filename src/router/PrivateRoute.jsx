@@ -9,7 +9,7 @@ import { Route, Redirect } from 'react-router-dom'
             if(token){
                 axios({
                     method: "POST",
-                    url: "http://localhost:4000/vertify-token",
+                    url: "https://rank-bank-bkqombvhm-codemaine.vercel.app/vertify-token",
                     data: {
                         accountToken: token
                     }

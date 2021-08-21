@@ -19,7 +19,7 @@ function SignUp() {
         setIsButtonLoading(true)
        axios({
            method: "POST",
-           url: "http://localhost:4000/signup",
+           url: "https://rank-bank-bkqombvhm-codemaine.vercel.app/signup",
            data: {
                name: data.name,
                account_number: account_number,

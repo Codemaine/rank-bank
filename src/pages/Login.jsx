@@ -14,7 +14,7 @@ function Login(props) {
     const onSubmit = data => {
        axios({
            method: "POST",
-           url: "http://localhost:4000/login",
+           url: "https://rank-bank-bkqombvhm-codemaine.vercel.app/login",
            headers: {
              "Access-Control-Allow-Origin": true
            },
@@ -52,7 +52,7 @@ function Login(props) {
             if(localStorage.getItem('userToken')){
                 axios({
                     method: "POST",
-                    url: "http://localhost:4000/vertify-token",
+                    url: "https://rank-bank-bkqombvhm-codemaine.vercel.app/vertify-token",
                     headers: {
                         "Access-Control-Allow-Origin": true
                       },

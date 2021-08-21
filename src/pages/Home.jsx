@@ -21,7 +21,7 @@ class Home extends Component {
         const token = localStorage.getItem("userToken")
         axios({
             method: "POST",
-            url: "http://localhost:4000/vertify-token",
+            url: "https://rank-bank-bkqombvhm-codemaine.vercel.app/vertify-token",
             data: {
                 accountToken: token
             }
@@ -32,7 +32,7 @@ class Home extends Component {
         
         axios({
             method: "GET",
-            url: "http://localhost:4000/view-transactions",
+            url: "https://rank-bank-bkqombvhm-codemaine.vercel.app/view-transactions",
             data: {
                 accountToken: token
             },
@@ -84,7 +84,7 @@ class Home extends Component {
 
         axios({
             method: "POST",
-            url: "http://localhost:4000/send-money",
+            url: "https://rank-bank-bkqombvhm-codemaine.vercel.app/send-money",
             headers: {
                 "Access-Control-Allow-Origin": true,
                 "Authorization": `Bearer ${token}`,
